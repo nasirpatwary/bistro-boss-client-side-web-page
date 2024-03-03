@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>car services project</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'all-color': '#FF3811',
+                        'p-all': '#737373',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="max-w-7xl mx-auto">
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul tabindex="0"
+                            class="menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-lg text-all-color text-lg font-semibold">
+                            <li><a class="hover:text-orange-600 hover:underline hover:underline-offset-8"
+                                    href="">Home</a></li>
+                            <li><a class="hover:text-orange-600 hover:underline hover:underline-offset-8"
+                                    href="">About</a></li>
+                            <li><a class="hover:text-orange-600 hover:underline hover:underline-offset-8"
+                                    href="">Services</a></li>
+                            <li><a class="hover:text-orange-600 hover:underline hover:underline-offset-8"
+                                    href="">Bolg</a></li>
+                            <li><a class="hover:text-orange-600 hover:underline hover:underline-offset-8"
+                                    href="">Contact</a></li>
+                        </ul>
+                    </div>
+                    <img class="w-14 md:w-16 lg:w-24" src="logo.svg" alt="">
+                </div>
+                <div class="navbar-center hidden lg:flex">
+                    <ul class="space-x-12 menu-horizontal px-1 text-lg font-semibold">
+                        <li><a class="hover:text-orange-600 hover:underline hover:underline-offset-8" href="">Home</a>
+                        </li>
+                        <li><a class="hover:text-orange-600 hover:underline hover:underline-offset-8" href="">About</a>
+                        </li>
+                        <li><a class="hover:text-orange-600 hover:underline hover:underline-offset-8"
+                                href="">Services</a></li>
+                        <li><a class="hover:text-orange-600 hover:underline hover:underline-offset-8" href="">Bolg</a>
+                        </li>
+                        <li><a class="hover:text-orange-600 hover:underline hover:underline-offset-8"
+                                href="">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-end">
+                    <a
+                        class="border-2 md:py-2 p-2 md:px-4 rounded-lg text-lg text-all-color font-semibold ">Appointment</a>
+                </div>
+            </div>
+        </nav>
+        <section class="max-w-7xl mx-auto my-5 p-2">
+            <div class="carousel h-[600px] w-full rounded-lg">
+                <div id="slide1" class="carousel-item relative w-full">
+                    <img src="images/banner/5.jpg" class="w-full" />
+                    <div class="absolute items-center h-full flex bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)]">
+                        <div class="text-white space-y-5 md:pl-16 md:w-1/2">
+                            <h2 class="lg:text-6xl text-5xl font-bold md:-mt-40 -mt-40">Affordable Price For Car Servicing</h2>
+                            <p>There are many variations of passages of available, but the majority have suffered alteration in some form</p>
+                            <div class="md:space-x-2 items-center">
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3 border-all-color text-white bg-all-color">Discover More</button>
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3">Latest Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute flex items-center justify-between transform -translate-y-1/2 left-5 right-5  bottom-0">
+                        <a href="#slide6" class="btn text-center text-5 hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-left"></i></a>
+                        <a href="#slide2" class="btn hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div id="slide2" class="carousel-item relative w-full">
+                    <img src="images/banner/1.jpg" class="w-full" />
+                    <div class="absolute items-center h-full flex bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)]">
+                        <div class="text-white space-y-5 md:pl-16 md:w-1/2">
+                            <h2 class="lg:text-6xl text-5xl font-bold md:-mt-40 -mt-40">Affordable Price For Car Servicing</h2>
+                            <p>There are many variations of passages of available, but the majority have suffered alteration in some form</p>
+                            <div class="md:space-x-2 items-center">
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3 border-all-color text-white bg-all-color">Discover More</button>
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3">Latest Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute flex items-center justify-between transform -translate-y-1/2 left-5 right-5  bottom-0">
+                        <a href="#slide1" class="btn text-center text-5 hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-left"></i></a>
+                        <a href="#slide3" class="btn hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div id="slide3" class="carousel-item relative w-full">
+                    <img src="images/banner/2.jpg" class="w-full" />
+                    <div class="absolute items-center h-full flex bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)]">
+                        <div class="text-white space-y-5 md:pl-16 md:w-1/2">
+                            <h2 class="lg:text-6xl text-5xl font-bold md:-mt-40 -mt-40">Affordable Price For Car Servicing</h2>
+                            <p>There are many variations of passages of available, but the majority have suffered alteration in some form</p>
+                            <div class="md:space-x-2 items-center">
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3 border-all-color text-white bg-all-color">Discover More</button>
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3">Latest Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute flex items-center justify-between transform -translate-y-1/2 left-5 right-5  bottom-0">
+                        <a href="#slide2" class="btn text-center text-5 hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-left"></i></a>
+                        <a href="#slide4" class="btn hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div id="slide4" class="carousel-item relative w-full">
+                    <img src="images/banner/3.jpg" class="w-full" />
+                    <div class="absolute items-center h-full flex bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)]">
+                        <div class="text-white space-y-5 md:pl-16 md:w-1/2">
+                            <h2 class="lg:text-6xl text-5xl font-bold md:-mt-40 -mt-40">Affordable Price For Car Servicing</h2>
+                            <p>There are many variations of passages of available, but the majority have suffered alteration in some form</p>
+                            <div class="md:space-x-2 items-center">
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3 border-all-color text-white bg-all-color">Discover More</button>
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3">Latest Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute flex items-center justify-between transform -translate-y-1/2 left-5 right-5  bottom-0">
+                        <a href="#slide3" class="btn text-center text-5 hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-left"></i></a>
+                        <a href="#slide5" class="btn hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div id="slide5" class="carousel-item relative w-full">
+                    <img src="images/banner/4.jpg" class="w-full" />
+                    <div class="absolute items-center h-full flex bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)]">
+                        <div class="text-white space-y-5 md:pl-16 md:w-1/2">
+                            <h2 class="lg:text-6xl text-5xl font-bold md:-mt-40 -mt-40">Affordable Price For Car Servicing</h2>
+                            <p>There are many variations of passages of available, but the majority have suffered alteration in some form</p>
+                            <div class="md:space-x-2 items-center">
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3 border-all-color text-white bg-all-color">Discover More</button>
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3">Latest Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute flex items-center justify-between transform -translate-y-1/2 left-5 right-5  bottom-0">
+                        <a href="#slide4" class="btn text-center text-5 hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-left"></i></a>
+                        <a href="#slide6" class="btn hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div id="slide6" class="carousel-item relative w-full">
+                    <img src="images/banner/6.jpg" class="w-full" />
+                    <div class="absolute items-center h-full flex bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)]">
+                        <div class="text-white space-y-5 md:pl-16 md:w-1/2">
+                            <h2 class="lg:text-6xl text-5xl font-bold md:-mt-40 -mt-40">Affordable Price For Car Servicing</h2>
+                            <p>There are many variations of passages of available, but the majority have suffered alteration in some form</p>
+                            <div class="md:space-x-2 items-center">
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3 border-all-color text-white bg-all-color">Discover More</button>
+                                <button class="border text-lg font-semibold rounded-lg px-4 py-3">Latest Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute flex items-center justify-between transform -translate-y-1/2 left-5 right-5  bottom-0">
+                        <a href="#slide5" class="btn text-center text-5 hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-left"></i></a>
+                        <a href="#slide1" class="btn hover:bg-all-color hover:text-white btn-circle"><i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <main class="max-w-7xl mx-auto my-12 p-2">
+            <!-- section image title -->
+            <section class="flex flex-col md:flex-row-reverse lg:flex-row gap-5 md:gap-12 lg:gap-32 items-center">
+               <div class="md:w-1/2 relative">
+                <img class="rounded-lg md:h-[400px] lg:h-[450px]" src="images/about_us/person.jpg" alt="">
+                <img class="absolute lg:left-80 left-40 -mt-24 w-[150px] md:w-[200px] lg:-mt-48 lg:w-[300px] border-8 rounded-lg border-white" src="images/about_us/parts.jpg" alt="">
+               </div>
+               <div class="md:w-1/2 space-y-2 md:space-y-5 lg:pr-36">
+                <p class="text-xl text-all-color font-bold">About Us</p>
+                <h2 class="text-4xl lg:pr-12  md:text-[45px] font-bold">We are qualified & of experience in this field</h2>
+                <p class="text-[#737373]">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                <p class="text-[#737373]">the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                <button class="border text-lg font-semibold rounded-lg px-4 py-3 border-all-color text-white bg-all-color"">Get More Info</button>
+               </div>
+            </section>
+            <!-- card img 3 -->
+            <section class="my-24">
+                <div class="text-center space-y-2">
+                    <p class="text-all-color text-xl font-bold">Service</p>
+                    <h3 class="text-[45px] font-bold">Our Service Area</h3>
+                    <p class="text-p-all w-1/2 mx-auto">the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
+                </div>
+                    <div class="my-12">
+                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                            <div class="space-y-3 bg-base-100 border-2 p-5 rounded-lg">
+                                <img class="rounded-lg" src="images/services/2.jpg" alt="Shoes" class="rounded-lg" />
+                                <h2 class="text-2xl font-bold">Electrical System</h2>
+                                <div class="flex items-center text-all-color text-xl font-semibold justify-between">
+                                    <p>Price : $20.00</p>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                             </div>
+                            <div class="space-y-3 bg-base-100 border-2 p-5 rounded-lg">
+                                <img class="rounded-lg md:h-[210px] lg:h-[240px]" src="images/services/5.jpg" alt="Shoes" class="rounded-lg" />
+                                <h2 class="text-2xl font-bold">Electrical System</h2>
+                                <div class="flex items-center text-all-color text-xl font-semibold justify-between">
+                                    <p>Price : $20.00</p>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                             </div>
+                            <div class="space-y-3 bg-base-100 border-2 p-5 rounded-lg">
+                                <img class="rounded-lg" src="images/services/6.jpg" alt="Shoes" class="rounded-lg" />
+                                <h2 class="text-2xl font-bold">Electrical System</h2>
+                                <div class="flex items-center text-all-color text-xl font-semibold justify-between">
+                                    <p>Price : $20.00</p>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                             </div>
+                            <div class="space-y-3 bg-base-100 border-2 p-5 rounded-lg">
+                                <img class="rounded-lg" src="images/services/4.jpg" alt="Shoes" class="rounded-lg" />
+                                <h2 class="text-2xl font-bold">Electrical System</h2>
+                                <div class="flex items-center text-all-color text-xl font-semibold justify-between">
+                                    <p>Price : $20.00</p>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                             </div>
+                            <div class="space-y-3 bg-base-100 border-2 p-5 rounded-lg">
+                                <img class="rounded-lg" src="images/services/3.jpg" alt="Shoes" class="rounded-lg" />
+                                <h2 class="text-2xl font-bold">Electrical System</h2>
+                                <div class="flex items-center text-all-color text-xl font-semibold justify-between">
+                                    <p>Price : $20.00</p>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                             </div>
+                            <div class="space-y-3 bg-base-100 border-2 p-5 rounded-lg">
+                                <img class="rounded-lg" src="images/services/1.jpg" alt="Shoes" class="rounded-lg" />
+                                <h2 class="text-2xl font-bold">Electrical System</h2>
+                                <div class="flex items-center text-all-color text-xl font-semibold justify-between">
+                                    <p>Price : $20.00</p>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                             </div>
+                         </div>
+                      </div>
+            </section>
+        </main>
+        <footer>
+
+        </footer>
+</body>
+
+
+</html>
