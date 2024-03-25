@@ -26,10 +26,23 @@
 
 
 
-const numbers = 12;
-if (numbers < 15) {
+// const numbers = 12;
+// if (numbers < 15) {
     
-    console.log("is true");
-}else{
-    console.log("not true");
+//     console.log("is true");
+// }else{
+//     console.log("not true");
+// }
+function javascript(counter) {
+    let initioal = 0;
+    let valwes = ["a", "e", "i", "o", "u"];
+    for (const valwe of counter) {
+        if (valwes.includes(valwe)) {
+            initioal++;
+        }
+    }
+    return initioal
 }
+
+let sum = javascript("Bangladesh oman male female is very fresh")
+console.log(sum);
