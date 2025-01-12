@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import MenuItem from "../../components/MenuItem/MenuItem";
+import useMenu from "../../hooks/useMenu";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const PopularMenu = () => {
-    const [menu, setMenu] = useState([])
-    useEffect(() =>{
-        fetch("menu.json")
-        .then(res => res.json())
-        .then(data => {
-            setMenu(data)
-        })
-    },[])
+    const [menu,loading] = useMenu()
+    const popular = menu.filter(item => item.category === "popular")
+    if (loading) {
+        return <LoadingSpinner />
+    }
     return (
         <section>
          <SectionTitle
@@ -19,7 +17,7 @@ const PopularMenu = () => {
          />
         <div className="grid lg:grid-cols-2 gap-4 my-10">
             {
-                menu.filter(item => item.category === "popular").map(popular => <MenuItem key={popular._id} popular={popular}></MenuItem>)
+                popular.map(popular => <MenuItem key={popular._id} item={popular}></MenuItem>)
             }
         </div>
          <div className="text-center mb-10">

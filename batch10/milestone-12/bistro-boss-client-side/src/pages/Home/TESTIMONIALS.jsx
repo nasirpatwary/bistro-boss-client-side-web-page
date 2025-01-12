@@ -4,16 +4,20 @@ import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { Rating } from "@smastrom/react-rating";
+import axios from "axios";
 const TESTIMONIALS = () => {
     const [textImoni, setTextImoni] = useState([])
     useEffect(() => {
-        fetch("reviews.json")
-            .then(res => res.json())
-            .then(data => {
-                setTextImoni(data)
-            })
+        textimoniData()
     }, [])
-    console.log(textImoni);
+    const textimoniData = async() =>{
+        try {
+            const {data} = await axios(`${import.meta.env.VITE_SCRETE_URL}/reviews`)
+            setTextImoni(data)
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <section className="my-10 space-y-10">
             <SectionTitle heading={"TESTIMONIALS"} subHeading={"What Our Clients Say"} />

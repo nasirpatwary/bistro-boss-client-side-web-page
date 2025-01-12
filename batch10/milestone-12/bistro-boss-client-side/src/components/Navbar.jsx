@@ -1,12 +1,34 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import shop from "../assets/icon/shop.png"
+import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
+import useAuth from "../hooks/useAuth";
+import useCart from "../hooks/useCart";
 const Navbar = () => {
+    const [cart] = useCart()
+    const {user, signOutUser} = useAuth()
+    const handleSignOut = () =>{
+        signOutUser()
+        .then(() =>{
+            console.log("Sign Out Success full");
+        })
+        .catch(error => console.error(error))
+    }
     const links = <>
-    <NavLink className={({isPending, isActive})=> `${isPending ? "pending" : isActive ? "text-[#EEFF25]" : undefined}`} to="/">Home</NavLink>
-    <NavLink className={({isPending, isActive})=> `${isPending ? "pending" : isActive ? "text-[#EEFF25]" : undefined}`} to="/contacts">CONTACT us</NavLink>
-    <NavLink className={({isPending, isActive})=> `${isPending ? "pending" : isActive ? "text-[#EEFF25]" : undefined}`} to="/dashboard">DASHBOARD</NavLink>
-    <NavLink className={({isPending, isActive})=> `${isPending ? "pending" : isActive ? "text-[#EEFF25]" : undefined}`} to="/our-menu">Our Menu</NavLink>
-    <NavLink className={({isPending, isActive})=> `${isPending ? "pending" : isActive ? "text-[#EEFF25]" : undefined}`} to="/our-shop">Our Shop</NavLink>
+    <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/">Home</NavLink>
+    <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/menu">Our Menu</NavLink>
+    <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/order/salad">Order Food</NavLink>
+    <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/secrete">Secrete</NavLink>
+    {
+        user ? 
+        <>
+        <button onClick={handleSignOut} className="">Sign Out</button>
+        <span className="cursor-pointer">{user?.displayName}</span>
+        </>
+        :
+        <>
+        <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/login">Login</NavLink>
+        </>
+    }
     </>
     return (
         <nav>
@@ -31,22 +53,20 @@ const Navbar = () => {
                             tabIndex={0}
                             className="menu space-y-3 menu-sm border dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             {links}
+                            <Link to="/dashboard/cart"><div className="badge badge-secondary">+{cart.length}</div></Link>
                             <img className="w-8" src={shop} alt="" />
                         </ul>
                     </div>
                     <a className="text-xl text-white">Bistro Boss</a>
                 </div>
                 <div>
-                    <div className="hidden lg:flex">
+                    <div className="hidden items-center lg:flex">
                         <ul className="menu gap-5 text-white menu-horizontal px-1">
                             {links}
                         </ul>
+                        <Link to="/dashboard/cart"><div className="badge badge-secondary">+{cart.length}</div></Link>
+                        <img className="w-8" src={shop} alt="" />
                     </div>
-                   <div className="flex gap-2 text-white">
-                   <img className="w-8" src={shop} alt="" />
-                   <button>Sign Out</button>
-                   <img src="" alt="" />
-                   </div>
                 </div>
             </div>
         </nav>

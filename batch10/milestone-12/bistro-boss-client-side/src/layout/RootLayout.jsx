@@ -1,15 +1,18 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const RootLayout = () => {
+    const location = useLocation()
+    const headerFooter = location.pathname
+    const noHeaderFooter = headerFooter.includes("login") || headerFooter.includes("signup")
     return (
         <div>
-            <Navbar />
-            <div className="min-h-[calc(100vh-294px)]">
+            { noHeaderFooter || <Navbar />}
+            <div className="min-h-[calc(100vh-260px)]">
             <Outlet />
             </div>
-            <Footer />
+           { noHeaderFooter || <Footer />}
         </div>
     );
 };

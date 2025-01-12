@@ -9,3 +9,18 @@ html{
 shadow{
   text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 }
+
+.hover-zoom-container {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.hover-zoom-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.hover-zoom-container:hover .hover-zoom-image {
+  transform: scale(1.1); 
+}

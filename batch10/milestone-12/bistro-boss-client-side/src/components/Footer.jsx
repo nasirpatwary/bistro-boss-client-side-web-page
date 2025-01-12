@@ -8,10 +8,10 @@ const Footer = () => {
                     <h6 className="footer-title">CONTACT US</h6>
                     <p>123 ABS Street, Uni 21, Bangladesh</p>
                         <p>+88 123456789</p>
-                        <p>Current Year {moment().format("MMMM YYYY, h:mm:ss a")}</p>
+                        <p>Current Year {moment().format("MMMM YYYY, h : mm a")}</p>
                         <p>Previous Year {new Date().getFullYear() -1}</p>
                 </div>
-                <nav className="w-full py-10 bg-[#111827] flex flex-col justify-center items-center text-center ">
+                <nav className="w-full py-10 space-y-3 bg-[#111827] flex flex-col justify-center items-center text-center ">
                     <h6 className="footer-title">Follow US</h6>
                     <p>Join us on social media</p>
                     <div className="grid grid-flow-col gap-4">

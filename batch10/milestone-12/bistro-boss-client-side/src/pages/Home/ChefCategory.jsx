@@ -1,29 +1,27 @@
-import { useEffect, useState } from "react";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import MenuCard from "../../components/MenuCard/MenuCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import useMenu from "../../hooks/useMenu";
 
 const ChefCategory = () => {
-    const [chefs, setChefs] = useState([])
-    useEffect(() => {
-        fetch("menu.json")
-            .then(res => res.json())
-            .then(data => {
-                setChefs(data)
-            })
-    }, [])
+    const [menu, loading] = useMenu()
+    const salad = menu.filter(salad => salad.category === "salad").slice(0, 3)
+    if (loading) {
+        return <LoadingSpinner />
+    }
     return (
-        <setion>
+        <>
         <SectionTitle heading={"CHEF RECOMMENDS"} subHeading={"Should Try"} ></SectionTitle>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-10">
             {
-                chefs.filter(salad => salad.category === "salad").slice(0, 3).map(item => <MenuCard
+                salad.map(item => <MenuCard
                     key={item?._id}
                     item={item}
                 >
                 </MenuCard>)
             }
         </div>
-        </setion>
+        </>
     );
 };
 
