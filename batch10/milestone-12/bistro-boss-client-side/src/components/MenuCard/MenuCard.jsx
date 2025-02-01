@@ -7,17 +7,17 @@ const MenuCard = ({ item }) => {
   const navigate = useNavigate()
   const { user } = useAuth()
   const [, , , refetch] = useCart()
-  const { name, image, recipe, price, _id } = item
+  const { name, image, recipe, price, _id, category } = item
   const handleAddTooCart = async () => {
     if (user && user?.email) {
-      console.log(user);
       const cartIems = {
         email: user.email,
-        itemId: _id,
+        menuId: _id,
         name,
         image,
         recipe,
         price,
+        category
       }
       try {
         const { data } = await axios.post(`${import.meta.env.VITE_SCRETE_URL}/carts`, cartIems)

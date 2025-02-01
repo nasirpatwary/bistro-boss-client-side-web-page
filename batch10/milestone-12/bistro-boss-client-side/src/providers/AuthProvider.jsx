@@ -41,6 +41,7 @@ const AuthProvider = ({ children }) => {
                 const {data} = await axiosPublic.post("/jwt", userInfo)
                 if (data.token) {
                     localStorage.setItem("access-token", data.token)
+                    setLoading(false)
                 }
             } else {
                 localStorage.removeItem("access-token")

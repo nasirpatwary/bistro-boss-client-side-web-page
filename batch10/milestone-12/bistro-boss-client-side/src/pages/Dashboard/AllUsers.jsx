@@ -70,9 +70,9 @@ const AllUsers = () => {
                            {
                             users.map((user, i) =>  <tr key={user?._id}>
                                 <th>{i + 1}</th>
-                                <td>{user?.name}</td>
-                                <td>{user?.email}</td>
-                                <td>{user?. role ? "Admin" : <button onClick={()=>handleAddmin(user)} className="border rounded py-2 px-2.5"><FaUsers size={20} /></button>}
+                                <td className="whitespace-nowrap">{user?.name}</td>
+                                <td className="whitespace-nowrap">{user?.email}</td>
+                                <td>{user?.role ? "Admin" : <button onClick={()=>handleAddmin(user)} className="border rounded py-2 px-2.5"><FaUsers size={20} /></button>}
                                 </td>
                                <td><button onClick={()=>handleDelete(user?._id)} className="border rounded text-red-500 py-2 px-2.5"> <RiDeleteBin6Line size={20} /></button></td>
                             </tr>)

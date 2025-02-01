@@ -8,20 +8,15 @@ import menuImg5 from "../../../assets/menu/salad-bg.jpg"
 import MenuCategory from "../MenuCategory";
 import SectionCover from "../../../components/SectionCover/SectionCover";
 import useMenu from "../../../hooks/useMenu";
-import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const Menu = () => {
-    const [menu, loading] = useMenu()
+    const [menu] = useMenu()
     const offered = menu.filter(items => items.category === "offered")
     const dessert = menu.filter(items => items.category === "dessert")
     const pizza = menu.filter(items => items.category === "pizza")
     const soup = menu.filter(items => items.category === "soup")
     const salad = menu.filter(items => items.category === "salad")
-
-    if (loading) {
-        return <LoadingSpinner />
-    }
     return (
         <>
             <Helmet>

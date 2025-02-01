@@ -5,6 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
+import toast from 'react-hot-toast';
 const Login = () => {
     const { signInUser } = useAuth()
     const navigate = useNavigate()
@@ -32,7 +33,9 @@ const Login = () => {
                 });
                 navigate(location?.state ? location?.state : "/")
             })
-            .catch(error => console.log(error))
+            .catch(err => {
+                if (err) return toast.error("email and password should match with the registered email and password")
+            })
     }
     const handleBlur = e => {
         const captcha_value = e.target.value;

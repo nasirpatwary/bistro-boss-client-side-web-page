@@ -18,13 +18,14 @@ const MyCartTable = ({ item, index }) => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const { data } = await axiosSecure.delete(`/cart-delete/${id}`)
-                console.log(data);
                 if (data.deletedCount > 0) {
                     refetch()
                     Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
+                        position: "top-center",
+                        icon: "success",
+                        title: `${name} is has been deleted`,
+                        showConfirmButton: false,
+                        timer: 1500
                     });
                 }
             }
@@ -49,7 +50,7 @@ const MyCartTable = ({ item, index }) => {
             <td className="whitespace-nowrap">{name}</td>
             <td className="text-orange-600">${price}</td>
             <th>
-                <button onClick={() => handleDelete(_id)} className="border rounded text-red-500 py-2 px-2.5"><RiDeleteBin6Line size={20} /></button>
+                <button onClick={() => handleDelete(_id)} className="border rounded text-white bg-red-500 py-2 px-2.5"><RiDeleteBin6Line size={20} /></button>
             </th>
         </tr>
     );

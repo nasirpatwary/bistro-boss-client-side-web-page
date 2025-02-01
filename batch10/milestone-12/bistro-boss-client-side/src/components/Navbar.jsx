@@ -3,8 +3,10 @@ import shop from "../assets/icon/shop.png"
 import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 const Navbar = () => {
     const [cart] = useCart()
+    const [isAdmin] = useAdmin()
     const {user, signOutUser} = useAuth()
     const handleSignOut = () =>{
         signOutUser()
@@ -17,7 +19,14 @@ const Navbar = () => {
     <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/">Home</NavLink>
     <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/menu">Our Menu</NavLink>
     <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/order/salad">Order Food</NavLink>
-    <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/secrete">Secrete</NavLink>
+    
+    {
+        user && isAdmin && <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/dashboard/adminHome">Dashboard</NavLink>
+    }
+    {
+        user && !isAdmin && <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/dashboard/adminHome">Dashboard</NavLink>
+    }
+
     {
         user ? 
         <>
