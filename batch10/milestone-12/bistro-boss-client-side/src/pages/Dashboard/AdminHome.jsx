@@ -25,7 +25,7 @@ const AdminHome = () => {
     })
     // custom colors
     const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
-    const colors2 = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const colors2 = ['#0088FE', '#00C49F', '#FFBB28', 'red', '#FF8042'];
     // custom shape for the bar chart
     const getPath = (x, y, width, height) => {
         return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inter:wght@100..900&display=swap');
 body{
     font-family: "Inter", sans-serif;
     background-color: black;
@@ -12,6 +12,9 @@ body{
 ::selection{
     background-color: white;
     color: blue;
+}
+.shape{
+    font-family: "Dancing Script", cursive;
 }
 /* shared styles start here */
     /* h1, h2, h3, h4, h5, h6 */
@@ -44,6 +47,7 @@ body{
 .main-container{
     margin: 0 auto;
     width: 77.8%;
+    margin-top: 20px;
     margin-bottom: 40px;
 }
 nav{
@@ -54,7 +58,7 @@ nav{
 nav > ul{
     display: flex;
     align-items: center;
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.233);
     padding: 8px 4px;
     border-radius: 40px;
     gap: 40px;
@@ -94,6 +98,9 @@ nav a{
     line-height: 120%;
     margin-bottom: 15px;
 }
+.btn-all{
+    margin-top: 15px;
+}
 .btn-now{
     background-color: #E6533C;
     padding: 10px 15px;
@@ -101,7 +108,6 @@ nav a{
     border-radius: 30px;
     font-size: 16px;
     font-weight: 600;
-    margin-top: 15px;
 }
 .btn-app{
     background-color: rgba(0, 0, 0, 0.267);
@@ -126,14 +132,18 @@ nav a{
     position: relative;
 }
 .card-1{
-    width: 35%;
+    width: 32%;
     background-color: rgba(128, 128, 128, 0.315);
+    backdrop-filter: blur(10px);
     border-radius: 5px;
     position: absolute;
     top: 28%;
     left: 65%;
-    text-align: center;
     padding: 5px 0 10px 0;
+    padding-left: 10px;
+}
+.card-1 p{
+    font-size: 13px;
 }
 .card-1 h3{
     font-size: 32px;
@@ -145,17 +155,17 @@ nav a{
     gap: 5px;
 }
 .card-2{
-    width: 35%;
+    width: 32%;
     background-color: rgba(128, 128, 128, 0.315);
+    backdrop-filter: blur(5px);
     border-radius: 5px;
     position: absolute;
     bottom: 65px;
-    left: -20px;
-    text-align: center;
+    left: -15px;
     padding: 5px 0 10px 10px;
 }
 .card-2 h3{
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 800;
 }
 .cricle{
@@ -180,7 +190,6 @@ nav a{
     width: 55%;
    text-align: center;
    margin: 0 auto;
-   margin-top: 60px;
 }
 .change-content h1{
    font-size: 45px;
@@ -225,7 +234,7 @@ nav a{
     color: white;
     width: 70%;
     margin-top: 5%;
-    margin-left: 10%;
+    margin-left: 5%;
 }
 .parents-card .card-5 p{
     color: white;
@@ -532,7 +541,7 @@ option{
 /* footer section start here */
 .footer-section{
     background-color: rgba(128, 128, 128, 0.281);
-    padding: 40px 0px;
+    padding: 40px 0px 20px 0px;
 }
 .footer-content-1{
     width: 43%;
@@ -554,12 +563,13 @@ option{
     text-decoration: none;
 }
 .horizetal{
+    margin-top: 30px;
     border: 1px solid rgba(255, 255, 255, 0.199);
 }
 .foot-text{
     color: rgba(255, 255, 255, 0.795);
     text-align: center;
-    margin-top: 15px;
+    margin-top: 50px;
 }
 /* responsive layout styles */
 @media screen and (max-width: 576px) {
@@ -578,22 +588,27 @@ option{
     .banner-container, .run-extra-container, .bmi-flex-box, .footer-container{
         flex-direction: column;
     }
-    .btn-app{
-        margin-left: 5px;
-    }
     header{
         padding: 0px 10px;
     }
-    nav > ul, .meet-trainer-1, .meet-trainer-4{
+    nav > ul, .meet-trainer-1, .meet-trainer-4, #club{
         display: none;
     }
-    .btn-all, .meet-our-content, .traininges-content{
+    .meet-our-content, .traininges-content{
         text-align: center;
     }
     .card-2{
         width: 140px;
         bottom: 42%;
         left: 10px;
+    }
+    .card-2 h3{
+       font-size: 20px;
+       text-align: start;
+    }
+    .card-1 h3{
+       font-size: 20px;
+       text-align: start;
     }
     .card-1{
         width: 140px;
@@ -603,7 +618,11 @@ option{
     .change-content{
         margin-top: 0px;
     }
-    .card-1 h3, .change-content h1,.left-site h1{
+    .change-content h1{
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .left-site h1{
         font-size: 32px;
         font-weight: 700;
     }
@@ -611,13 +630,21 @@ option{
         width: 70%;
     }
     .footer-container{
-        margin-left: 35px;
+        margin-left: 10px;
+    }
+    .foot-text{
+        text-align: start;
+        margin-top: 15px;
+        margin-left: 10px;
     }
     .footer-section{
         margin-top: 30px;
     }
     .main-container{
         margin-bottom: 0px;
+    }
+    .main-container{
+        padding: 10px;
     }
     .main-container, 
     .change-content, 
@@ -634,30 +661,30 @@ option{
     .traininges-content,
     #select-pactor,
     .calculate-bmi div select,
-    .calculate-bmi div input
+    .calculate-bmi div input,
+    .btn-now,
+    .btn-app
     {
         width: 100%;
     }
-    .horizetal{
-        width: 90%;
-        margin: 0 auto;
+    .btn{
+        width: 60%;
     }
-    .meet-out-team-container{
-        width: 95%;
-        margin: 0 auto;
-    }
-    .run-extra-container, .bmi-container{
-        width: 95%;
-        margin: 30px auto;
+    .calculate-bmi div input, .calculate-bmi div select{
+        margin-right: 0px;
     }
     .bmi-content{
         margin-left: 0px;
+        padding: 10px;
     }
     .run-extra-container{
         padding: 20px;
     }
     .bmi-flex-box{
         gap: 30px;
+    }
+    .horizetal{
+        margin-top: 5px;
     }
     .banner-container, .run-extra-container{
         gap: 20px;
@@ -669,6 +696,10 @@ option{
         display: block;
     }
     .input-flex{
+        display: flex;
+        gap: 5px;
+    }
+     .btn-all{
         display: flex;
     }
     .meet-our-content, .footer-content-1{
@@ -686,7 +717,7 @@ option{
         .card-4{
             grid-column: 7/ span 6;
             grid-row: 1/ span 5;
-            background-position: -13cap;
+            background-position: -9cap;
         }
         .card-6{
             grid-column: 1/ span 5;

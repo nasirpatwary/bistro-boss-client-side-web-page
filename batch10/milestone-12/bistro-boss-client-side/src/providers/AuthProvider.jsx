@@ -9,7 +9,6 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
     const provider = new GoogleAuthProvider();
     const axiosPublic = useAxiosPublic()
-
     const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -37,8 +36,8 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser)
             console.log("Current User ---->", currentUser);
             if (currentUser) {
-                const userInfo = {email: currentUser.email}
-                const {data} = await axiosPublic.post("/jwt", userInfo)
+                const userInfo = { email: currentUser.email }
+                const { data } = await axiosPublic.post("/jwt", userInfo)
                 if (data.token) {
                     localStorage.setItem("access-token", data.token)
                     setLoading(false)

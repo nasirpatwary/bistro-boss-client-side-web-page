@@ -7,6 +7,13 @@ require("dotenv").config()
 const stripe = require('stripe')(process.env.SECRETE_KEY_PK_LOADSTRIPE)
 const port = process.env.PROT || 5000
 
+
+// sending mailgun 
+  const formData = require('form-data');
+  const Mailgun = require('mailgun.js');
+  const mailgun = new Mailgun(formData);
+  const mg = mailgun.client({username: 'api', key: process.env.MAIL_GUN_API_KEY || 'key-yourkeyhere'});
+
 // middleware
 app.use(cors())
 app.use(express.json())
@@ -47,13 +54,13 @@ const verifyAdmin = async (req, res, next) => {
   }
   next()
 }
+
 const db = client.db("bistro-boss")
 const menuCollection = db.collection("menu");
 const reviewCollection = db.collection("reviews");
 const cartCollection = db.collection("carts");
 const userCollection = db.collection("users");
 const paymentCollection = db.collection("payments");
-
 async function run() {
   try {
     // jwt post 
@@ -172,9 +179,9 @@ async function run() {
     // create-payment-intent
     app.post('/create-payment-intent', async (req, res) => {
       const { price } = req.body;
-        const amount = parseInt(price * 100);
+      const amount = parseInt(price * 100);
       const paymentIntent = await stripe.paymentIntents.create({
-        amount: amount,
+        amount,
         currency: 'usd',
         payment_method_types: ['card']
       });
@@ -183,26 +190,101 @@ async function run() {
         clientSecret: paymentIntent.client_secret
       })
     });
-    app.get("/payment/shistory/:email",verifyToken, async (req, res) => {
-      const query = {email: req.params.email};
+    app.get("/payment/shistory/:email", verifyToken, async (req, res) => {
+      const query = { email: req.params.email };
       if (req.params.email !== req.decoded.email) {
-        return res.status(403).send({message: "forbidden access"})
+        return res.status(403).send({ message: "forbidden access" })
       }
-      const result = await paymentCollection.find(query).toArray()
+      const result = await paymentCollection.find(query).sort({ price: 1 }).toArray()
       res.send(result)
     })
     app.post('/payments', async (req, res) => {
       const payment = req.body;
       const paymentResult = await paymentCollection.insertOne(payment);
       //  carefully delete each item from the cart
-      console.log('payment info', payment);
+      // console.log('payment info', payment);
       const query = {
         _id: {
           $in: payment.cartIds.map(id => new ObjectId(id))
-        }
+        },
       };
+      // sending mailgun email post 
+      mg.messages.create(process.env.MAIL_SENDING_DOMAIN, {
+        from: "Excited User <postmaster@sandboxa139eedf3866483491f08633eacf4ee1.mailgun.org>",
+        to: ["nasirhpatwary75@gmail.com"],
+        subject: "Bistro order confirmation",
+        text: "Testing some Mailgun awesomeness!",
+        html: `<h1>Testing some Mailgun awesomeness! ${payment.transactionId}</h1>`
+      })
+      .then(msg => console.log(msg)) // logs response data
+      .catch(err => console.log(err)); // logs any error
       const deleteResult = await cartCollection.deleteMany(query);
       res.send({ paymentResult, deleteResult });
+    })
+    // stats or analyties
+    app.get("/admin-stats", verifyToken, verifyAdmin, async (req, res) => {
+      const users = await userCollection.estimatedDocumentCount()
+      const menuItems = await menuCollection.estimatedDocumentCount()
+      const orders = await paymentCollection.estimatedDocumentCount()
+      // const payments = await paymentCollection.find().toArray()
+      // const revening = payments.reduce((total, item) => total + item.price, 0)
+      const result = await paymentCollection.aggregate([
+        {
+          $group: {
+            _id: null,
+            totalRevenue: { $sum: "$price" }
+          }
+        }
+      ]).toArray()
+      const revenue = result?.length > 0 ? result[0].totalRevenue : 0;
+
+      res.send({
+        users,
+        menuItems,
+        orders,
+        revenue
+      })
+    })
+
+    // order pipelince 
+    app.get("/order-stats",verifyToken, verifyAdmin, async (req, res) => {
+      const result = await paymentCollection.aggregate([
+        {
+          $unwind: "$menuItemIds"
+        },
+        {
+          $set: {
+            menuItemIds: { $toObjectId: "$menuItemIds" } // Convert string to ObjectId
+          }
+        },
+        {
+          $lookup: {
+            from: "menu",
+            localField: "menuItemIds",
+            foreignField: "_id",
+            as: "menuItems"
+          }
+        },
+        {
+          $unwind: "$menuItems"
+        },
+        {
+          $group: {
+            _id: "$menuItems.category",
+            quantity: { $sum: 1 },
+            revenue: { $sum: "$menuItems.price"}
+          }
+        },
+        {
+          $project: {
+            _id: 0,
+            category: "$_id",
+            quantity: '$quantity',
+            revenue: '$revenue'
+          }
+        }
+      ]).toArray()
+      res.send(result)
     })
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {

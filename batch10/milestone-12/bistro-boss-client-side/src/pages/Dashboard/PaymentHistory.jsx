@@ -39,7 +39,7 @@ const PaymentHistory = () => {
                                     <th>{i + 1}</th>
                                     <td className="whitespace-nowrap">{history?.email}</td>
                                     <td>{history?.category? history?.category?.charAt(0).toUpperCase() + history?.category?.slice(1): "No Category"}</td>
-                                    <td>{history?.price}</td>
+                                    <td>{history?.price?.toFixed(1)}</td>
                                     <td><button className={history.status === "pending" ? "bg-red-100 p-0.5 rounded" : history.status === "success" ? "bg-green-200 p-0.5 rounded" : undefined}>{history.status}</button></td>
                                     <td className="whitespace-nowrap">{moment(history.date).format('dddd, MMMM D, YYYY')}</td>
                                 </tr>)

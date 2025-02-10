@@ -14,7 +14,7 @@ const MyCart = () => {
                 </SectionTitle>
                 <div className="flex justify-between">
                     <h4 className="uppercase md:text-2xl">Itmes: {cart.length}</h4>
-                    <h4 className="md:text-2xl">Price: ${totalPrice}</h4>
+                    <h4 className="md:text-2xl">Price: ${totalPrice.toFixed(2)}</h4>
                     {
                         cart.length ? <Link to="/dashboard/payment"><button className="btn btn-outline">PAY</button></Link>
                         :<button disabled className="btn btn-outline">PAY</button>
