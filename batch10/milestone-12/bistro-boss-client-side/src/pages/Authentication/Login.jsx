@@ -52,20 +52,20 @@ const Login = () => {
                 <div className="text-center lg:text-left">
                     <img src={logo} alt="" />
                 </div>
-                <div className="card w-full max-w-sm shrink-0">
+                <div className="card w-full max-w-sm shrink-0 border rounded">
                     <h1 className="text-2xl text-center mt-4 font-bold">Login now!</h1>
                     <form onSubmit={handleLogin} className="card-body pb-3">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                            <input type="email" name='email' placeholder="email" className="input input-bordered border w-full rounded" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                            <input type="password" name='password' placeholder="password" className="input input-bordered border w-full rounded" required />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
@@ -74,9 +74,9 @@ const Login = () => {
                             <label className="label">
                                 <LoadCanvasTemplate />
                             </label>
-                            <input onBlur={handleBlur} type="text" placeholder="type the captcha" className="input input-bordered" required />
+                            <input onBlur={handleBlur} type="text" placeholder="type the captcha" className="input input-bordered border w-full rounded" required />
                         </div>
-                        <div className="form-control mt-6">
+                        <div className="form-control border rounded w-full mt-6">
                             <input disabled={disabled} className="btn btn-outline btn-success" type="submit" value="Login" />
                         </div>
                     </form>

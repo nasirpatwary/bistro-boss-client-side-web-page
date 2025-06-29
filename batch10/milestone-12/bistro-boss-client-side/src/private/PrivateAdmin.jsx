@@ -13,7 +13,7 @@ const PrivateAdmin = ({ children }) => {
     if (user && isAdmin) {
         return children
     }
-   return <Navigate state={location.pathname} to="/"></Navigate>
+   return <Navigate state={location.pathname} to="/login"></Navigate>
 };
 
 export default PrivateAdmin;

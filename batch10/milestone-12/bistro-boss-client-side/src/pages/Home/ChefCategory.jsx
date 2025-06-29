@@ -2,7 +2,6 @@ import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import MenuCard from "../../components/MenuCard/MenuCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import useMenu from "../../hooks/useMenu";
-
 const ChefCategory = () => {
     const [menu, loading] = useMenu()
     const salad = menu.filter(salad => salad.category === "salad").slice(0, 3)

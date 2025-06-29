@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const AllUsers = () => {
     const axiosSecure = useAxios()
-    const { isPending, error, data: users = [], refetch } = useQuery({
+    const {  data: users = [], isPending, error, refetch } = useQuery({
         queryKey: ['repoData'],
         queryFn: async() =>{
             const {data} = await axiosSecure.get("/users")

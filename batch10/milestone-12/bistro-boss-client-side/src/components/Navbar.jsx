@@ -21,10 +21,7 @@ const Navbar = () => {
     <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/order/salad">Order Food</NavLink>
     
     {
-        user && isAdmin && <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/dashboard/adminHome">Dashboard</NavLink>
-    }
-    {
-        user && !isAdmin && <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to="/dashboard/adminHome">Dashboard</NavLink>
+        user && <NavLink className={({isPending, isActive})=> `${isPending ? <LoadingSpinner /> : isActive ? "text-[#EEFF25]" : undefined}`} to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}>Dashboard</NavLink>
     }
 
     {

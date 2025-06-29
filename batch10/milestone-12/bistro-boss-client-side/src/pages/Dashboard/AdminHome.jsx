@@ -10,7 +10,7 @@ const AdminHome = () => {
     const { user } = useAuth()
     const axiosSecure = useAxios()
     const { data: stats = {} } = useQuery({
-        queryKey: ["admin-stats", user?.email],
+        queryKey: ["admin-stats"],
         queryFn: async () => {
             const { data } = await axiosSecure.get("/admin-stats")
             return data
@@ -19,7 +19,7 @@ const AdminHome = () => {
     const { data: chartData = [] } = useQuery({
         queryKey: ["order-stats"],
         queryFn: async () => {
-            const { data } = await axiosSecure("order-stats");
+            const { data } = await axiosSecure.get("order-stats");
             return data
         }
     })

@@ -1,5 +1,6 @@
 
 const MenuItem = ({item}) => {
+    console.log(item);
     const {name, image, recipe, price} = item
     return (
         <div className="flex flex-col md:flex-row space-x-3">
@@ -11,6 +12,5 @@ const MenuItem = ({item}) => {
             <p className="text-yellow-500">${price}</p>
         </div>
     );
-};
-
+}
 export default MenuItem;

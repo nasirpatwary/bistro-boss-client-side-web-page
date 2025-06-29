@@ -2,6 +2,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "./CheckOutForm";
+import SSLPayment from "./SSLPayment";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 const stripePromise = loadStripe(import.meta.env.VITE_PUBLISHABLE_KEY_PK_LOADSTRIPE)
 const Payment = () => {
     return (
@@ -13,8 +15,19 @@ const Payment = () => {
             </div> */}
             <div>
                 <Elements stripe={stripePromise}>
-                    {/* component CheckOut */}
-                    <CheckOutForm></CheckOutForm>
+                    <Tabs>
+                        <TabList>
+                            <Tab>Stripe</Tab>
+                            <Tab>SSL Commerze</Tab>
+                        </TabList>
+
+                        <TabPanel>
+                            <CheckOutForm></CheckOutForm>
+                        </TabPanel>
+                        <TabPanel>
+                            <SSLPayment></SSLPayment>
+                        </TabPanel>
+                    </Tabs>
                 </Elements>
             </div>
         </div>

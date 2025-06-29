@@ -1,10 +1,16 @@
 import moment from "moment";
 import parallax from "../../assets/home/featured.jpg"
-import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";  
+import backImage from "../../assets/home/featured.jpg"
 const Parallax = () => {
     return (
         <>
-            <div className="bg-parallax bg-fixed bg-cover text-white">
+            <div 
+            className="bg-fixed bg-cover text-white"
+            style={{
+                backgroundImage: `url(${backImage})`
+            }}
+            >
                <div className="pt-10 bg-black/30">
                <SectionTitle heading={"FROM OUR MENU"} subHeading={"Check it out"} />
                </div>
